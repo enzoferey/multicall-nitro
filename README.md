@@ -16,9 +16,9 @@ Supercharge Multicall.js with nitro features 💨
 
 ## Why
 
-While [Multicall.js](https://github.com/makerdao/multicall.js) provides an JavaScript interface to the amazing [Multicall](https://github.com/makerdao/multicall) by MakerDAO, it still requires a bit of work to integrate it into a real world production application.
+While [Multicall.js](https://github.com/makerdao/multicall.js) provides a JavaScript interface to the amazing [Multicall](https://github.com/makerdao/multicall) contract by MakerDAO, it still requires a bit of work to integrate it into a real world production application. This is where `multicall-nitro` comes in.
 
-This is where `multicall-nitro` comes in. The goal is to provide a layer on top of `Multicall.js` that supercharges it and eases its usage in different contexts. Thanks to the TypeScript support, simplified APIs, and different utilities, your Multicall integration will be on nitro 💨
+The goal is to provide a layer on top of Multicall.js that supercharges its features and eases its usage in different contexts. Thanks to fully typed and simplified APIs plus different utilities, your Multicall integration will be on nitro 💨
 
 ## Getting started
 
@@ -30,10 +30,10 @@ yarn install @enzoferey/multicall-nitro @makerdao/multicall
 
 2. Follow along the use cases below 👇🏻
 
-> 💡 In all examples below you will see you need to provide a configuration object containing:
+> 💡 No matter the use case, you will need to provide a configuration object containing:
 >
-> - `rpcUrl`: the RPC url of the node you want to use for the call (it could be Infura, Alchemy, etc.)
-> - `multicallAddress`: the address of the Multicall contract, you can find the address for each blockchain [here](https://github.com/makerdao/multicall)
+> - `rpcUrl`: the url of the RPC node you want to use to make the calls (it could be Infura, Alchemy, etc.)
+> - `multicallAddress`: the address of the Multicall contract in your target blockchain. See [here](https://github.com/makerdao/multicall)
 
 ### Get batched values and subscribe to changes
 
@@ -57,7 +57,7 @@ const calls = [
   getErc20BalanceMulticall(tokenAddress1, connectedAccountAddress, {
     label: "balanceToken1",
   }),
-  getErc20BalanceMulticall(tokenAddress1, connectedAccountAddress, {
+  getErc20BalanceMulticall(tokenAddress2, connectedAccountAddress, {
     label: "balanceToken2",
   }),
 ];
@@ -86,7 +86,7 @@ await watcher.stop();
 
 ### Get batched values once
 
-Sometimes you do not want to subscribe to values updates but just get them once. This function will only resolve when all values have been received.
+Sometimes you do not want to subscribe to values updates but just get them once. The returned promise will resolve when all values have been received.
 
 ```ts
 import {
@@ -106,7 +106,7 @@ const calls = [
   getErc20BalanceMulticall(tokenAddress1, connectedAccountAddress, {
     label: "balanceToken1",
   }),
-  getErc20BalanceMulticall(tokenAddress1, connectedAccountAddress, {
+  getErc20BalanceMulticall(tokenAddress2, connectedAccountAddress, {
     label: "balanceToken2",
   }),
 ];
@@ -134,6 +134,7 @@ import {
 
 const tokenAddress1 = "0x...";
 const connectedAccountAddress = "0x...";
+const someOtherAccountAddress = "0x...";
 
 const calls = [
   // Get the ERC20 token balance of `connectedAccountAddress`
@@ -144,10 +145,15 @@ const calls = [
   getErc20DecimalsMulticall(tokenAddress1, {
     label: "decimalsToken1",
   }),
-  // Get the ERC20 token allowance for `connectedAccountAddress`
-  getErc20AllowanceMulticall(tokenAddress1, connectedAccountAddress, {
-    label: "allowanceToken1",
-  }),
+  // Get the ERC20 token allowance provided by `connectedAccountAddress` to `someOtherAccountAddress`
+  getErc20AllowanceMulticall(
+    tokenAddress1,
+    connectedAccountAddress,
+    someOtherAccountAddress,
+    {
+      label: "allowanceToken1",
+    }
+  ),
 ];
 
 // you can then pass these `calls` into `createWatcher`, `getBatchedValuesOnce` or any other entry point
@@ -157,7 +163,7 @@ Are you missing any utility for ERC20 tokens values ? Please open an issue or pu
 
 ### Get blockchain values
 
-Writing calls is tedious and error-prone, use these utilities to get values of blockchain you connect to.
+Writing calls is tedious and error-prone, use these utilities to get values of the blockchain you connect to.
 
 ```ts
 import { getBlockchainNativeTokenBalanceMulticall } from "@enzoferey/multicall-nitro";
@@ -178,7 +184,7 @@ Are you missing any utility for blockchain values ? Please open an issue or pull
 
 ### Custom calls
 
-On top of the built-in utilities that enable you to construct common calls, you can use your own custom calls.
+On top of the built-in utilities that enable you to construct common calls, you can write your own custom calls.
 
 ```ts
 import { Call } from "@enzoferey/multicall-nitro";
@@ -208,13 +214,13 @@ const calls = [
 
 Wraps [`createWatcher`](#get-batched-values-and-subscribe-to-changes) into a React hook.
 
-> 💡 In order to use this hook, you need to have the `react` dependency installed.
+> 💡 In order to use this hook, you need to have the `react` peer dependency installed.
 >
 > ```sh
 > yarn install react
 > ```
 >
-> Also notice the trailing `/react` on the import statement, this is for reducing bundle size
+> Notice the trailing `/react` on the import statement, this is for reducing bundle size
 > if you don't use the React specific code.
 
 ```ts
@@ -260,13 +266,13 @@ const MyComponent = (props) => {
 
 Wraps [`getBatchedValuesOnce`](#get-batched-values-once) into a React hook. The returned value will be `null` until all values have been received.
 
-> 💡 In order to use this hook, you need to have the `react` dependency installed.
+> 💡 In order to use this hook, you need to have the `react` peer dependency installed.
 >
 > ```sh
 > yarn install react
 > ```
 >
-> Also notice the trailing `/react` on the import statement, this is for reducing bundle size
+> Notice the trailing `/react` on the import statement, this is for reducing bundle size
 > if you don't use the React specific code.
 
 ```ts
