@@ -1,10 +1,10 @@
-import type { Call } from "../../types";
+import type { Call, CallOptions } from "../../types";
 
 export function getErc20DecimalsMulticall(
   erc20ContractAddress: string,
-  options: { label?: string } = {}
+  options: CallOptions
 ): Call {
-  const { label = "decimals" } = options;
+  const { label } = options;
 
   return {
     target: erc20ContractAddress,

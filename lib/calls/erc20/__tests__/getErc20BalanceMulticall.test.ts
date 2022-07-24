@@ -7,17 +7,9 @@ describe("getErc20BalanceMulticall", () => {
     expect(
       getErc20BalanceMulticall(
         "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-        "0xffffffffffffffffffffffffffffffffffffffff"
-      )
-    ).toMatchSnapshot();
-  });
-  it("should allow overwritting the value label", () => {
-    expect(
-      getErc20BalanceMulticall(
-        "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
         "0xffffffffffffffffffffffffffffffffffffffff",
         { label: "some label" }
-      ).label
+      )
     ).toMatchSnapshot();
   });
 });

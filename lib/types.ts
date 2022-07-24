@@ -1,3 +1,5 @@
+export type { BigNumber } from "bignumber.js";
+
 export interface Watcher<Value = unknown> {
   start: () => Promise<void>;
   subscribe: (
@@ -15,6 +17,10 @@ export interface MulticallCall {
 export interface Call {
   target?: string;
   call: unknown[];
+  label: string;
+}
+
+export interface CallOptions {
   label: string;
 }
 

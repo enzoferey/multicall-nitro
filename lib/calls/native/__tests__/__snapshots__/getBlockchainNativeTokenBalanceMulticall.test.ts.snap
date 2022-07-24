@@ -1,13 +1,11 @@
 // Vitest Snapshot v1
 
-exports[`getBlockchainNativeTokenBalanceMulticall > should allow overwritting the value label 1`] = `"some label"`;
-
 exports[`getBlockchainNativeTokenBalanceMulticall > should match the call 1`] = `
 {
   "call": [
     "getEthBalance(address)(uint256)",
     "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
   ],
-  "label": "balance",
+  "label": "some label",
 }
 `;

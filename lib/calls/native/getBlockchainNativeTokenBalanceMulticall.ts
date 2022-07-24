@@ -1,10 +1,10 @@
-import type { Call } from "../../types";
+import type { Call, CallOptions } from "../../types";
 
 export function getBlockchainNativeTokenBalanceMulticall(
   address: string,
-  options: { label?: string } = {}
+  options: CallOptions
 ): Call {
-  const { label = "balance" } = options;
+  const { label } = options;
 
   return {
     call: ["getEthBalance(address)(uint256)", address],

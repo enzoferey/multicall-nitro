@@ -1,12 +1,12 @@
-import type { Call } from "../../types";
+import type { Call, CallOptions } from "../../types";
 
 export function getErc20AllowanceMulticall(
   erc20ContractAddress: string,
   ownerAddress: string,
   spenderAddress: string,
-  options: { label?: string } = {}
+  options: CallOptions
 ): Call {
-  const { label = "allowance" } = options;
+  const { label } = options;
 
   return {
     target: erc20ContractAddress,

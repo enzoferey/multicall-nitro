@@ -1,13 +1,11 @@
 // Vitest Snapshot v1
 
-exports[`getErc20DecimalsMulticall > should allow overwritting the value label 1`] = `"some label"`;
-
 exports[`getErc20DecimalsMulticall > should match the call 1`] = `
 {
   "call": [
     "decimals()(uint8)",
   ],
-  "label": "decimals",
+  "label": "some label",
   "target": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
 }
 `;

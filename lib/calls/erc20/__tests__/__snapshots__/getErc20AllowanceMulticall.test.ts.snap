@@ -1,7 +1,5 @@
 // Vitest Snapshot v1
 
-exports[`getErc20AllowanceMulticall > should allow overwritting the value label 1`] = `"some label"`;
-
 exports[`getErc20AllowanceMulticall > should match the call 1`] = `
 {
   "call": [
@@ -9,7 +7,7 @@ exports[`getErc20AllowanceMulticall > should match the call 1`] = `
     "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
     "0xffffffffffffffffffffffffffffffffffffffff",
   ],
-  "label": "allowance",
+  "label": "some label",
   "target": "0xdddddddddddddddddddddddddddddddddddddddd",
 }
 `;

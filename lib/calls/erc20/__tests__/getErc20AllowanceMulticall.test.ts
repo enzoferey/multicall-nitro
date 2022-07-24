@@ -8,18 +8,9 @@ describe("getErc20AllowanceMulticall", () => {
       getErc20AllowanceMulticall(
         "0xdddddddddddddddddddddddddddddddddddddddd",
         "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-        "0xffffffffffffffffffffffffffffffffffffffff"
-      )
-    ).toMatchSnapshot();
-  });
-  it("should allow overwritting the value label", () => {
-    expect(
-      getErc20AllowanceMulticall(
-        "0xdddddddddddddddddddddddddddddddddddddddd",
-        "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
         "0xffffffffffffffffffffffffffffffffffffffff",
         { label: "some label" }
-      ).label
+      )
     ).toMatchSnapshot();
   });
 });

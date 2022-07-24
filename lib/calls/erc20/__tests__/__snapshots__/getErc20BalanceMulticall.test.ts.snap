@@ -1,14 +1,12 @@
 // Vitest Snapshot v1
 
-exports[`getErc20BalanceMulticall > should allow overwritting the value label 1`] = `"some label"`;
-
 exports[`getErc20BalanceMulticall > should match the call 1`] = `
 {
   "call": [
     "balanceOf(address)(uint256)",
     "0xffffffffffffffffffffffffffffffffffffffff",
   ],
-  "label": "balance",
+  "label": "some label",
   "target": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
 }
 `;
