@@ -2,7 +2,7 @@
 
 ![Tests](https://github.com/enzoferey/multicall-nitro/actions/workflows/test.yml/badge.svg)
 [![npm version](https://badge.fury.io/js/@enzoferey%2Fmulticall-nitro.svg)](https://badge.fury.io/js/@enzoferey%2Fmulticall-nitro)
-[![codecov](https://codecov.io/gh/enzoferey/multicall-nitro/branch/main/graph/badge.svg?token=9amQLrkrar)](https://codecov.io/gh/enzoferey/multicall-nitro)
+[![codecov](https://codecov.io/gh/enzoferey/multicall-nitro/branch/main/graph/badge.svg?token=8KLY137H6P)](https://codecov.io/gh/enzoferey/multicall-nitro)
 
 Supercharge Multicall.js with nitro features 💨
 
