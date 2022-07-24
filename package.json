@@ -24,7 +24,7 @@
         "./dist/index.d.ts"
       ],
       "react": [
-        "./dist/react.d.ts"
+        "./dist/react/index.d.ts"
       ]
     }
   },

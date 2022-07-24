@@ -6,7 +6,7 @@ import dts from "vite-plugin-dts";
 export default defineConfig({
   build: {
     lib: {
-      entry: path.resolve(__dirname, "lib/react.ts"),
+      entry: path.resolve(__dirname, "lib/react/index.ts"),
       name: "multicall-nitro-react",
       fileName: "multicall-nitro-react",
     },
