@@ -1,0 +1,11 @@
+// Vitest Snapshot v1
+
+exports[`getBlockchainNativeTokenBalanceMulticall > should match the call 1`] = `
+{
+  "call": [
+    "getEthBalance(address)(uint256)",
+    "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+  ],
+  "label": "some label",
+}
+`;
