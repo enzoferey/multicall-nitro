@@ -1,9 +1,9 @@
-import type { Call, CallOptions } from "../../types";
+import type { NativeCall, CallOptions } from "../../types";
 
 export function getBlockchainNativeTokenBalanceMulticall(
   address: string,
   options: CallOptions
-): Call {
+): NativeCall {
   const { label } = options;
 
   return {

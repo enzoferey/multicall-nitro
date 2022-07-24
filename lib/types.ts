@@ -15,7 +15,12 @@ export interface MulticallCall {
 }
 
 export interface Call {
-  target?: string;
+  target: string;
+  call: unknown[];
+  label: string;
+}
+
+export interface NativeCall {
   call: unknown[];
   label: string;
 }
