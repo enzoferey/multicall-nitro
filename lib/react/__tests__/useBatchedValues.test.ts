@@ -47,7 +47,7 @@ describe("useBatchedValues", () => {
         };
       }, []);
 
-      return useBatchedValues(calls, config);
+      return useBatchedValues<Value>(calls, config);
     });
 
     expect(mockWatcherStart).toHaveBeenCalledTimes(1);
