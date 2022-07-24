@@ -1,6 +1,6 @@
 import type { Call } from "../../types";
 
-export function getNativeTokenBalanceMulticall(
+export function getBlockchainNativeTokenBalanceMulticall(
   address: string,
   options: { label?: string } = {}
 ): Call {

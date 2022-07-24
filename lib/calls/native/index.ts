@@ -1,1 +1,1 @@
-export * from "./getNativeTokenBalanceMulticall";
+export * from "./getBlockchainNativeTokenBalanceMulticall";

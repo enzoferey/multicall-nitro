@@ -1,18 +1,18 @@
 import { describe, it, expect } from "vitest";
 
-import { getNativeTokenBalanceMulticall } from "../getNativeTokenBalanceMulticall";
+import { getBlockchainNativeTokenBalanceMulticall } from "../getBlockchainNativeTokenBalanceMulticall";
 
-describe("getNativeTokenBalanceMulticall", () => {
+describe("getBlockchainNativeTokenBalanceMulticall", () => {
   it("should match the call", () => {
     expect(
-      getNativeTokenBalanceMulticall(
+      getBlockchainNativeTokenBalanceMulticall(
         "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
       )
     ).toMatchSnapshot();
   });
   it("should allow overwritting the value label", () => {
     expect(
-      getNativeTokenBalanceMulticall(
+      getBlockchainNativeTokenBalanceMulticall(
         "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
         {
           label: "some label",
