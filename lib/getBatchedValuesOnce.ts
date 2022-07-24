@@ -1,10 +1,10 @@
-import type { Call, Config, SubscriptionUpdate } from "./types";
+import type { Call, Config } from "./types";
 import { createWatcher } from "./createWatcher";
 
 export async function getBatchedValuesOnce<
   Value extends Record<string, unknown>
 >(calls: Call[], config: Config): Promise<Value> {
-  const watcher = createWatcher(calls, config);
+  const watcher = createWatcher<Value>(calls, config);
 
   await watcher.start();
 
@@ -15,7 +15,7 @@ export async function getBatchedValuesOnce<
       return aggregatedValue[call.label] !== undefined;
     };
 
-    watcher.subscribe(async (update: SubscriptionUpdate<Value>) => {
+    watcher.subscribe(async (update) => {
       aggregatedValue[update.type] = update.value;
 
       if (calls.every(hasCallBeenDone)) {

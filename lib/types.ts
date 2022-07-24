@@ -1,6 +1,6 @@
-export interface Watcher {
+export interface Watcher<Value = unknown> {
   start: () => Promise<void>;
-  subscribe: <Value>(
+  subscribe: (
     subscriptionCallback: (update: SubscriptionUpdate<Value>) => void
   ) => void;
   stop: () => Promise<void>;

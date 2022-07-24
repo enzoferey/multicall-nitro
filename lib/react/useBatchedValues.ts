@@ -1,6 +1,6 @@
 import React from "react";
 
-import type { Watcher, Call, Config, SubscriptionUpdate } from "../types";
+import type { Watcher, Call, Config } from "../types";
 import { createWatcher } from "../createWatcher";
 
 export function useBatchedValues<Value extends Record<string, unknown>>(
@@ -9,34 +9,33 @@ export function useBatchedValues<Value extends Record<string, unknown>>(
 ): Partial<Value> | null {
   const [value, setValue] = React.useState<Partial<Value> | null>(null);
 
-  const watcher = React.useMemo<Watcher | null>(() => {
+  const watcher = React.useMemo<Watcher<Value> | null>(() => {
     if (config === null) {
       return null;
     }
 
-    return createWatcher(calls, config);
+    return createWatcher<Value>(calls, config);
   }, [calls, config]);
 
-  const startWatcher = React.useCallback<(watcher: Watcher) => Promise<void>>(
-    async (watcher) => {
-      await watcher.start();
+  const startWatcher = React.useCallback<
+    (watcher: Watcher<Value>) => Promise<void>
+  >(async (watcher) => {
+    await watcher.start();
 
-      watcher.subscribe((update: SubscriptionUpdate<Value>) => {
-        setValue((currentValue) => {
-          if (currentValue === null) {
-            return {
-              [update.type]: update.value,
-            } as Partial<Value>;
-          }
+    watcher.subscribe((update) => {
+      setValue((currentValue) => {
+        if (currentValue === null) {
           return {
-            ...currentValue,
             [update.type]: update.value,
-          };
-        });
+          } as Partial<Value>;
+        }
+        return {
+          ...currentValue,
+          [update.type]: update.value,
+        };
       });
-    },
-    []
-  );
+    });
+  }, []);
 
   React.useEffect(() => {
     if (watcher === null) {
