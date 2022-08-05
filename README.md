@@ -25,7 +25,7 @@ The goal is to provide a layer on top of Multicall.js that supercharges its feat
 1. Install the package & its peer dependency
 
 ```sh
-yarn install @enzoferey/multicall-nitro @makerdao/multicall
+yarn add @enzoferey/multicall-nitro @makerdao/multicall
 ```
 
 2. Follow along the use cases below 👇🏻
@@ -217,7 +217,7 @@ Wraps [`createWatcher`](#get-batched-values-and-subscribe-to-changes) into a Rea
 > 💡 In order to use this hook, you need to have the `react` peer dependency installed.
 >
 > ```sh
-> yarn install react
+> yarn add react
 > ```
 >
 > Notice the trailing `/react` on the import statement, this is for reducing bundle size
@@ -269,7 +269,7 @@ Wraps [`getBatchedValuesOnce`](#get-batched-values-once) into a React hook. The 
 > 💡 In order to use this hook, you need to have the `react` peer dependency installed.
 >
 > ```sh
-> yarn install react
+> yarn add react
 > ```
 >
 > Notice the trailing `/react` on the import statement, this is for reducing bundle size
